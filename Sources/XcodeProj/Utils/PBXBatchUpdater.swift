@@ -172,8 +172,11 @@ public final class PBXBatchUpdater {
         } else {
             objectReferences = Dictionary(uniqueKeysWithValues:
                 try objects.fileReferences.compactMap {
-                    let fullPath = try $0.value.fullPath(sourceRoot: sourceRoot)!
-                    return (fullPath, $0.key)
+                    if let fullPath = try $0.value.fullPath(sourceRoot: sourceRoot) {
+                        return (fullPath, $0.key)
+                    } else {
+                        return nil
+                    }                    
                 })
             references = objectReferences
         }
@@ -187,8 +190,11 @@ public final class PBXBatchUpdater {
         } else {
             unwrappedGroups = Dictionary(uniqueKeysWithValues:
                 try objects.groups.compactMap {
-                    let fullPath = try $0.value.fullPath(sourceRoot: sourceRoot)!
-                    return (fullPath, $0.value)
+                    if let _ = $0.value.path, let fullPath = try $0.value.fullPath(sourceRoot: sourceRoot) {
+                        return (fullPath, $0.value)
+                    } else {
+                        return nil
+                    }
                 })
             groups = unwrappedGroups
         }
