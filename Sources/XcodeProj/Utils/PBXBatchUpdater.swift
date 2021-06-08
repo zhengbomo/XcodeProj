@@ -170,10 +170,16 @@ public final class PBXBatchUpdater {
         if let references = self.references {
             objectReferences = references
         } else {
+            var set = Set<Path>();
             objectReferences = Dictionary(uniqueKeysWithValues:
                 try objects.fileReferences.compactMap {
-                    if let fullPath = try $0.value.fullPath(sourceRoot: sourceRoot) {
-                        return (fullPath, $0.key)
+                    if let _ = $0.value.path, let fullPath = try $0.value.fullPath(sourceRoot: sourceRoot) {
+                        if !set.contains(fullPath) {
+                            set.insert(fullPath)
+                            return (fullPath, $0.key)
+                        } else {
+                            return nil
+                        }
                     } else {
                         return nil
                     }                    
@@ -188,10 +194,16 @@ public final class PBXBatchUpdater {
         if let groups = self.groups {
             unwrappedGroups = groups
         } else {
+            var set = Set<Path>();
             unwrappedGroups = Dictionary(uniqueKeysWithValues:
                 try objects.groups.compactMap {
                     if let _ = $0.value.path, let fullPath = try $0.value.fullPath(sourceRoot: sourceRoot) {
-                        return (fullPath, $0.value)
+                        if !set.contains(fullPath) {
+                            set.insert(fullPath)
+                            return (fullPath, $0.value)
+                        } else {
+                            return nil
+                        }
                     } else {
                         return nil
                     }
