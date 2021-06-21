@@ -119,7 +119,13 @@ public final class PBXBatchUpdater {
         if let fileParentGroup = try lazilyInstantiateGroups()[groupPath] {
             return (fileParentGroup, groupPath)
         }
-        let components = groupPath.components
+        let components: [String]
+        if sourceRoot.contains(groupPath) {
+            let relativeGroupPath = groupPath.relative(to: sourceRoot)
+            components = relativeGroupPath.components
+        } else {
+            components = groupPath.components
+        }
         let componentsCount = components.count - 1
         for componentIndex in (0 ... componentsCount).reversed() {
             let currentPathComponents = components[0 ... componentIndex]
@@ -142,10 +148,10 @@ public final class PBXBatchUpdater {
         let fileParentGroup = try createChildGroups(
             in: mainGroup,
             groupPath: mainGroupFullPath,
-            with: groupPath.components
+            with: components
         )
 
-        let fileParentGroupPath = mainGroupFullPath + Path(components: groupPath.components)
+        let fileParentGroupPath = mainGroupFullPath + Path(components: components)
         return (fileParentGroup, fileParentGroupPath)
     }
 
