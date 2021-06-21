@@ -245,6 +245,41 @@ final class XCSchemeIntegrationTests: XCTestCase {
         XCTAssertNotEqual(runnableA1, remoteRunnableA1)
     }
 
+    func test_schemeWithoutBlueprintIdentifier_canBeCreated() {
+        let subject = try? XCScheme(path: noBlueprintIDPath)
+        XCTAssertNotNil(subject)
+    }
+
+    func test_schemeWithoutBlueprintIdentifier_serializesWithoutBlueprintIdentifier() throws {
+        let subject = try XCScheme(path: noBlueprintIDPath)
+        let buildable = try XCTUnwrap(subject.buildAction?.buildActionEntries.first?.buildableReference)
+        let buildableXML = buildable.xmlElement()
+        XCTAssertNotNil(buildableXML.attributes["BlueprintName"])
+        XCTAssertNil(buildableXML.attributes["BlueprintIdentifier"])
+    }
+      
+    func test_buildAction_runPostActionsOnFailure() throws {
+        // Given / When
+        let subject = try XCScheme(path: runPostActionsOnFailureSchemePath)
+
+        // Then
+        let buildAction = try XCTUnwrap(subject.buildAction)
+        XCTAssertTrue(buildAction.runPostActionsOnFailure == true)
+    }
+
+    func test_buildAction_runPostActionsOnFailure_serializingAndDeserializing() throws {
+        // Given
+        let scheme = try XCScheme(path: runPostActionsOnFailureSchemePath)
+        let subject = try XCTUnwrap(scheme.buildAction)
+
+        // When
+        let xml = subject.xmlElement()
+        let reconstructedSubject = try XCScheme.BuildAction(element: xml)
+
+        // Then
+        XCTAssertEqual(reconstructedSubject, subject)
+    }
+
     // MARK: - Private
 
     private func assert(scheme: XCScheme) {
@@ -253,7 +288,7 @@ final class XCSchemeIntegrationTests: XCTestCase {
         // Build action
         XCTAssertTrue(scheme.buildAction?.parallelizeBuild == true)
         XCTAssertTrue(scheme.buildAction?.buildImplicitDependencies == true)
-        XCTAssertTrue(scheme.buildAction?.runPostActionsOnFailure == false)
+        XCTAssertNil(scheme.buildAction?.runPostActionsOnFailure)
         XCTAssertTrue(scheme.buildAction?.buildActionEntries.first?.buildFor.contains(.testing) == true)
         XCTAssertTrue(scheme.buildAction?.buildActionEntries.first?.buildFor.contains(.running) == true)
         XCTAssertTrue(scheme.buildAction?.buildActionEntries.first?.buildFor.contains(.profiling) == true)
@@ -420,7 +455,7 @@ final class XCSchemeIntegrationTests: XCTestCase {
         // Build action
         XCTAssertTrue(scheme.buildAction?.parallelizeBuild == true)
         XCTAssertTrue(scheme.buildAction?.buildImplicitDependencies == true)
-        XCTAssertTrue(scheme.buildAction?.runPostActionsOnFailure == false)
+        XCTAssertNil(scheme.buildAction?.runPostActionsOnFailure)
         XCTAssertTrue(scheme.buildAction?.buildActionEntries.first?.buildFor.contains(.testing) == true)
         XCTAssertTrue(scheme.buildAction?.buildActionEntries.first?.buildFor.contains(.running) == false)
         XCTAssertTrue(scheme.buildAction?.buildActionEntries.first?.buildFor.contains(.profiling) == true)
@@ -523,7 +558,17 @@ final class XCSchemeIntegrationTests: XCTestCase {
         fixturesPath() + "Schemes/MinimalInformation.xcscheme"
     }
 
+    /// Path to a scheme with a buildable reference that contains no blueprint identifier
+    private var noBlueprintIDPath: Path {
+        fixturesPath() + "Schemes/NoBlueprintID.xcscheme"
+    }
+
     private var watchAppSchemePath: Path {
         fixturesPath() + "iOS/AppWithExtensions/AppWithExtensions.xcodeproj/xcshareddata/xcschemes/WatchApp.xcscheme"
+    }
+
+    private var runPostActionsOnFailureSchemePath: Path {
+        // A scheme with the `runPostActionsOnFailure` enabled
+        fixturesPath() + "Schemes/RunPostActionsOnFailure.xcscheme"
     }
 }
