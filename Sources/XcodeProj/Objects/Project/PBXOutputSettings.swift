@@ -152,6 +152,10 @@ public struct PBXOutputSettings {
 
     /// The format of project file references
     let projReferenceFormat: PBXReferenceFormat
+    
+    let ignoreBreakPoints: Bool
+    
+    let ignoreSchemes: Bool
 
     /**
      Default initializer
@@ -163,10 +167,14 @@ public struct PBXOutputSettings {
     public init(projFileListOrder: PBXFileOrder = .byUUID,
                 projNavigatorFileOrder: PBXNavigatorFileOrder = .unsorted,
                 projBuildPhaseFileOrder: PBXBuildPhaseFileOrder = .unsorted,
-                projReferenceFormat: PBXReferenceFormat = .xcode) {
+                projReferenceFormat: PBXReferenceFormat = .xcode,
+                ignoreSchemes: Bool = true,
+                ignoreBreakPoints: Bool = true) {
         self.projFileListOrder = projFileListOrder
         self.projNavigatorFileOrder = projNavigatorFileOrder
         self.projBuildPhaseFileOrder = projBuildPhaseFileOrder
         self.projReferenceFormat = projReferenceFormat
+        self.ignoreSchemes = ignoreSchemes
+        self.ignoreBreakPoints = ignoreBreakPoints
     }
 }

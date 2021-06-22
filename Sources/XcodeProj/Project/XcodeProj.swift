@@ -112,8 +112,12 @@ extension XcodeProj: Writable {
         try path.mkpath()
         try writeWorkspace(path: path, override: override)
         try writePBXProj(path: path, override: override, outputSettings: outputSettings)
-        try writeSchemes(path: path, override: override)
-        try writeBreakPoints(path: path, override: override)
+        if !outputSettings.ignoreSchemes {
+            try writeSchemes(path: path, override: override)
+        }
+        if !outputSettings.ignoreBreakPoints {
+            try writeBreakPoints(path: path, override: override)
+        }
     }
 
     /// Returns workspace file path relative to the given path.
