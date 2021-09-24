@@ -67,6 +67,69 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "muukii",
+      "name": "Muukii",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1888355?v=4",
+      "profile": "http://muukii.app",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "nnsnodnb",
+      "name": "Yuya Oka",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9856514?v=4",
+      "profile": "https://nnsnodnb.github.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "keith",
+      "name": "Keith Smiley",
+      "avatar_url": "https://avatars.githubusercontent.com/u/283886?v=4",
+      "profile": "https://smileykeith.com",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "ileitch",
+      "name": "Ian Leitch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48235?v=4",
+      "profile": "https://github.com/ileitch",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "subdan",
+      "name": "Daniil Subbotin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/410293?v=4",
+      "profile": "https://github.com/subdan",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "flowbe",
+      "name": "Florentin Bekier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8288625?v=4",
+      "profile": "https://www.florentin.tech",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "CognitiveDisson",
+      "name": "Vadim Smal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10621118?v=4",
+      "profile": "https://github.com/CognitiveDisson",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

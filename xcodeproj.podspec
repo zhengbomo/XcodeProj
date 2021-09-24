@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'xcodeproj'
-  s.version          = '8.0.0'
+  s.version          = '8.3.1'
   s.summary          = 'Read/Modify/Write your Xcode projects'
   s.homepage         = 'https://github.com/tuist/xcodeproj'
   s.license          = 'MIT'
@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.module_name = 'XcodeProj'
 
   s.dependency 'PathKit', '~> 1.0.0'
-  s.dependency 'AEXML', '~> 4.6.0'
+  s.dependency 'AEXML', '~> 4.6.1'
 end

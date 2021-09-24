@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
-   version = "1.3">
+   LastUpgradeVersion = "1230"
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A44FAD6035FC8C5CF9618B92"
-               BuildableName = "XcodeProj.framework"
-               BlueprintName = "XcodeProj"
-               ReferencedContainer = "container:XcodeProj_Carthage.xcodeproj">
+               BlueprintIdentifier = "FE7C11D21B6DB70D0041DF02"
+               BuildableName = "Ava.app"
+               BlueprintName = "core-ava"
+               ReferencedContainer = "container:core-ava.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9942115E25C4D3B7000711CE"
+               BuildableName = "AvaTests.xctest"
+               BlueprintName = "AvaTests"
+               ReferencedContainer = "container:core-ava.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,22 +45,29 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Staging"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
+      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
+      <RemoteRunnable
+         runnableDebuggingMode = "1"
+         BundleIdentifier = "me.ava.Ava-Staging"
+         RemotePath = "/var/containers/Bundle/Application/018F0933-05E8-4359-9955-39E0523C4246/Ava.app">
+      </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A44FAD6035FC8C5CF9618B92"
-            BuildableName = "XcodeProj.framework"
-            BlueprintName = "XcodeProj"
-            ReferencedContainer = "container:XcodeProj_Carthage.xcodeproj">
+            BlueprintIdentifier = "FE7C11D21B6DB70D0041DF02"
+            BuildableName = "Ava.app"
+            BlueprintName = "core-ava"
+            ReferencedContainer = "container:core-ava.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -56,15 +77,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A44FAD6035FC8C5CF9618B92"
-            BuildableName = "XcodeProj.framework"
-            BlueprintName = "XcodeProj"
-            ReferencedContainer = "container:XcodeProj_Carthage.xcodeproj">
+            BlueprintIdentifier = "FE7C11D21B6DB70D0041DF02"
+            BuildableName = "Ava.app"
+            BlueprintName = "core-ava"
+            ReferencedContainer = "container:core-ava.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -2,6 +2,38 @@
 
 ## Next
 
+
+### 8.3.1
+### Fixed
+
+- Fix Xcode 13 build [#648](https://github.com/tuist/XcodeProj/pull/648) by [@raptorxcz](https://github.com/raptorxcz)
+
+### 8.3.0 - Mojo
+### Added
+
+- `CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED` to default build setting [#641](https://github.com/tuist/XcodeProj/pull/641) by [@flowbe](https://github.com/flowbe)
+
+### Fixed
+
+- Xcode 13 build issues [#646](https://github.com/tuist/XcodeProj/pull/646) by [@jsorge](https://github.com/jsorge)
+
+### 8.2.0 - Bubbles
+### Added
+
+- Support obtaining the full path of a file element by passing the source root as a string [#624](https://github.com/tuist/XcodeProj/pull/624) by [@ileitch](https://github.com/ileitch).
+  
+### Fixed
+
+- If RemoteRunnable doesn't contains BuildableReference XcodeProj removes xcscheme file [#627](https://github.com/tuist/XcodeProj/pull/627) by [@subdan](https://github.com/subdan).
+
+### Changed
+
+- Updated AEXML to 4.6.1 [#632](https://github.com/tuist/XcodeProj/pull/632) by [@nnsnodnb](https://github.com/nnsnodnb).
+## 8.1.0 - Barcelona
+### Changed
+
+- Improve performance of commented string [#635](https://github.com/tuist/XcodeProj/pull/635) by [@adellibovi](https://github.com/adellibovi)
+
 ## 8.0.0 - Amor
 ### Fixed
 
